@@ -5,7 +5,7 @@ import '../Css/About.css'; // Create this CSS file for styling
 const About = () => {
   return (
     <section className="about">
-      <h2>Our Team</h2>
+      <h2>Our Teamasdasd</h2>
       <p></p>
     </section>
   );
