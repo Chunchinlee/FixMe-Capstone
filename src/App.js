@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
+import Navbar from "./Components/Navbar";
+import LoginModal from "./Components/LoginModal"; 
+import About from "./Components/About"; 
+import './Css/navbar.css';
 
-function App() {
+const App = () => {
+  const location = useLocation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {location.pathname !== '/login' && <Navbar onLoginClick={openModal} />}
+      <Routes>
+        <Route path="/" element={
+          <section className='hero'>
+            <h1>Welcome To Fixme</h1>
+            <p>Learn and Play with our Interactive Game</p>
+          </section>
+        } />
+        <Route path="/about" element={<About />} />
+      </Routes>
+      <LoginModal isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );
-}
+};
 
-export default App;
+const AppWrapper = () => (
+  <Router>
+    <App />
+  </Router>
+);
+
+export default AppWrapper;
