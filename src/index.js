@@ -5,7 +5,7 @@ import AppWrapper from './App'; // Make sure to import AppWrapper
 
 ReactDOM.render(
   <React.StrictMode>
-    <AppWrapper /> 
+    <AppWrapper />
   </React.StrictMode>,
   document.getElementById('root')
 );
